@@ -1,0 +1,15 @@
+#cloud-config
+rancher:
+  services:
+    rancher-bootstrap:
+        image: cloudnautique/bootstrap-ros:latest
+        environment:
+          - BOOTSTRAP_*
+        labels:
+          - io.rancher.os.scope=system
+        volumes_from:
+          - user-volumes
+  environment:
+    BOOTSTRAP_KEY: "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEApYYScm9+n7T8+IixLJ2hOSTuC7L90HSYm4WJZYBTxoNCeZCF\nWW0tFiyu2S96a6WdmL0VzRJEnovaLkAK14a9M+dFgJxhnbx185jhtOeah1PikDhX\npYZtcv1OwBRzBqa/FUOMOhIR2yEOOldwJHzlkpfWbe/cKruln5bQgoI27eTT28I6\nByYblHieuBhpqLpg7zCiOPoNHHhNy6am+lLwR2CNUhyJcMoAfr8HwmjsPT0XpeM1\nzOHmUiC0U8tJOrbi8MsD3/M2/ESOKbFIKbkQoPwpvg7We1a1mc0t57DWnpS2oWWQ\nHaE0qvJrVZYO2cID9E1g+5QLyE2zIcSRAj/lCwIDAQABAoIBABqn3qyjG+coRFzZ\n1n5y3BXRxqwHpSw+upzBAoFgCx264aemCHOAS3R4uaesJ7DSOPDx8mLWAErwBrDQ\nC27t+eYz5lNx256FTRFvm1mAurf0YFYNXMABR/rupBH2uRdnHvqTqC9p3YpGZn4q\nupqFqorS/OszZ2dSVLfAl8+MnL/uiYnZKtjUYHZDCja5L2k+8b4CUcmzLys7lxWZ\nox5WYwt9uGkfgY1KWl6TvT3eRh/FSzU1GrP8i9T6x2R51N8fsckqJNRPc5BAS3E9\n/2790SdUx8dRVypGZQ38XbZ9QeEw1DoFBAmcKHCedIdi+mQcZvSToMBkVondARnk\n3yAksiECgYEAz+/RXyzq96KKcCNAtemM4ZeS5u2dY4y0n69XZErmPJhaTLzw25x2\ngeOqJ1y4ctCtRltV1X7ysjHfqOq9H5/db3kV/cdesKkxpgoI3JiU8NuLW1D1LB1l\ngHUhZMmIGmWSwg/ZZuKQG5Vcd6cG6JqDg24pHDAaLCgbHdMtdE/w5ekCgYEAy8iO\n5Dcmr3OE5gM5EDN0Dxwjb88ARg1xDkglt2gflQbcoYnehyVLsTrtZE/e2jSLSDtD\nZZ1FOHSBXO3msHI7FZ+u3OXgvaLIfwItCWcAgzGf+2URjV2pbOxct7rIPDAEAcq2\nqBNUk9mzIOY3AftbJaLxo1hUZj4qQ6OJQuZRdtMCgYB4Kf3Tw5Bx1QOttCGkPriE\nceSaAT0QF3MWSOz273XIFL8yU4nZT70IaPmez61j5IYN/6BFxZwZMEsxQZ5TlT4R\nOmdkBgAJlW00p93hJWgFHMqW1d0pRj+vEYFfzjsSDhrWfPREya8/0XvjRanvZ8OS\ng2nMeVvWosKw5KYC7mOnaQKBgCwCBuHAC0muj8/AeG1IP1MYB4sYz/1Q385uxD5k\nbRWY4sK77GORKVR/3k5gdUb4O/AAZGCoYw97EYjJE52dPadA0dmAh1VMtzG+fY1f\nQhwS9nKq8+xsgq80KB3BZ4af8+2TInkPm59GT0nWjaCO8LMjCj31UFy4JhZvVbAt\n3v/jAoGBAKCaI47Bk3TkXOMi5mN7rnhmyPLnea36GgNSCFJXExTPKSN7qWcNKjIk\n92NKHFFojZR+a5ZMLXwVCI9OHjCwWf/Ek2LcGyiW1laZJIBbQ0wokM+cBbalmg1W\n80iyzQpeoJupSD9fVE01+wGu9M4Q1V9+IyVm5frGYK0ZGXSmu/fb\n-----END RSA PRIVATE KEY-----\n"
+    BOOTSTRAP_CRT: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClhhJyb36ftPz4iLEsnaE5JO4Lsv3QdJibhYllgFPGg0J5kIVZbS0WLK7ZL3prpZ2YvRXNEkSei9ouQArXhr0z50WAnGGdvHXzmOG055qHU+KQOFelhm1y/U7AFHMGpr8VQ4w6EhHbIQ46V3AkfOWSl9Zt79wqu6WfltCCgjbt5NPbwjoHJhuUeJ64GGmoumDvMKI4+g0ceE3Lpqb6UvBHYI1SHIlwygB+vwfCaOw9PRel4zXM4eZSILRTy0k6tuLwywPf8zb8RI4psUgpuRCg/Cm+DtZ7VrWZzS3nsNaelLahZZAdoTSq8mtVlg7ZwgP0TWD7lAvITbMhxJECP+UL wmaxwell@Bills-MBP"
+    BOOTSTRAP_CONFIG_JSON: '{ "auths": { "https://index.docker.io/v1/": { "auth": "passwordsupersecretreally", "email": "test@example.com" } } }'

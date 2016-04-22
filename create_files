@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ ! -e '/opt/ssl' ]; then
+    mkdir -p /opt/ssl
+    echo -e $BOOTSTRAP_KEY > /opt/ssl/ssl.key
+    echo -e $BOOTSTRAP_CRT > /opt/ssl/ssl.crt
+fi
+
+if [ -e '/home/rancher' ]; then
+    mkdir -p /home/rancher/.docker
+    echo $BOOTSTRAP_CONFIG_JSON > /home/rancher/.docker/config.json
+fi
