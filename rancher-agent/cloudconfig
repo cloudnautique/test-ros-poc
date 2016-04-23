@@ -1,0 +1,31 @@
+#cloud-config
+rancher:
+  environment:
+    ## ONLY SET BELOW IF REGISTRY LOGIN IS NEEDED
+    # REG_DOCKER_USER: "<SET TO USER>"
+    # REG_DOCKER_PASSWORD: "<SET TO PASSWORD>"
+    # REG_DOCKER_EMAIL: "<SET TO USER EMAIL>"
+    # REG_DOCKER_REGISTRY: "<SET TO REGISTRY NAME>"
+    ORIGINAL: "cloudnautique/rancher-agent:v1.0.1"
+    TARGET_TAG: "rancher/agent:v1.0.1"
+  services:
+    rancher-agent-from-odd-tag:
+      image: cloudnautique/docker-proxy-tag
+      environment:
+        # - REG_DOCKER*
+        - ORIGINAL
+        - TARGET_TAG
+      privileged: true
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      command:
+        - "docker"
+        - "run"
+        - "-d"
+        - "--privileged"
+        - "-v"
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "-v"
+        - "/var/lib/rancher:/var/lib/rancher"
+        - "rancher/agent:v1.0.1"
+        - "http://<ADD REAL ADDRESS AND URL>"
